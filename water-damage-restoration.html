@@ -168,7 +168,10 @@ a{color:inherit;}
 .nav-phone{font-family:var(--font-display);font-size:17px;letter-spacing:.5px;color:var(--blue);text-decoration:none;white-space:nowrap;}
 .btn-nav-cta{background:var(--red);color:white;text-decoration:none;padding:8px 16px;border-radius:6px;font-weight:700;font-size:12px;display:flex;align-items:center;gap:5px;transition:background .2s,transform .15s;white-space:nowrap;box-shadow:0 3px 12px rgba(200,40,30,.3);}
 .btn-nav-cta:hover{background:var(--red-dark);transform:translateY(-1px);}
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;}
+.mobile-nav-right{display:none;align-items:center;gap:12px;}
+.mobile-nav-phone{display:flex;align-items:center;gap:6px;background:var(--red);color:white;text-decoration:none;padding:7px 12px;border-radius:6px;font-size:13px;font-weight:700;white-space:nowrap;}
+.mobile-nav-dot{width:8px;height:8px;border-radius:50%;background:white;flex-shrink:0;animation:pulse-ring 2s ease-out infinite;}
+.nav-toggle{display:flex;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;position:relative;z-index:1003;flex-shrink:0;}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--text-primary);border-radius:2px;transition:.3s;}
 .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:white;z-index:1001;overflow-y:auto;padding:24px 24px 40px;flex-direction:column;gap:4px;}
 .mobile-menu.open{display:flex;}
@@ -400,8 +403,8 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
 }
 @media(max-width:768px){
   :root{--nav-h:64px;--carrier-h:54px;}
-  .nav-links,.nav-right{display:none;}
-  .nav-toggle{display:flex;}
+  .nav-links,.nav-right{display:none !important;pointer-events:none;}
+  .mobile-nav-right{display:flex;}
   .page-hero{padding-top:calc(var(--nav-h) + var(--carrier-h));}
   .hero-body{padding:24px 20px 36px;}
   .hero-alert{padding:10px 16px;flex-wrap:wrap;}
@@ -468,13 +471,17 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
       <li><a href="/contact/">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="live-indicator"><span class="live-dot"></span> Live 24/7</div>
-      <a href="tel:17189242043" class="nav-phone" id="navPhone">(718) 924-2043</a>
+      <span class="live-dot"></span><a href="tel:17189242043" class="nav-phone" id="navPhone">(718) 924-2043</a>
       <a href="#contact-form" class="btn-nav-cta">📋 Free Inspection</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="mobile-nav-right">
+      <a href="tel:17189242043" class="mobile-nav-phone" id="mobileNavPhone">
+        <span class="mobile-nav-dot"></span>(718) 924-2043
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -893,7 +900,7 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
       <p class="footer-about">Staten Island's leading water damage restoration company. IICRC certified, 90-minute emergency response, direct insurance billing. A proud member of the 1RP Family of Companies — restoring Staten Island since 1997.</p>
       <div class="footer-contact">
         <a href="tel:17189242043" id="footerPhone">📞 (718) 924-2043</a>
-        <a href="mailto:therestorationproclaims@gmail.com">✉️ therestorationproclaims@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#f3879b96819680879c8192879a9c9d83819c909f929a9e80b3949e929a9fdd909c9e">✉️ <span class="__cf_email__" data-cfemail="7f0b171a0d1a0c0b100d1e0b1610110f0d101c131e16120c3f18121e1613511c1012">[email&#160;protected]</span></a>
         <a href="/contact/">📍 Staten Island, NY 10309</a>
       </div>
     </div>
@@ -947,7 +954,7 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
   <a href="tel:17189242043" id="mobileStickyBar">📞 Call Now — 24/7: (718) 924-2043</a>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 'use strict';
 
 // ── NAV SCROLL ──
@@ -1077,13 +1084,4 @@ function toggleFaq(btn){
 // ── TIME ON PAGE ──
 [30,60,120].forEach(s=>setTimeout(()=>pushEvent({event:'time_on_page',seconds:s,page_type:'service_page'}),s*1000));
 
-// ── SMOOTH SCROLL ──
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
-</script>
-</body>
-</html>
+// ── SMOOTH SCROLL ─�
