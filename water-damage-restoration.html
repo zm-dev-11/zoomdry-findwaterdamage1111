@@ -177,12 +177,47 @@ a{color:inherit;}
 .mobile-menu .mobile-cta{background:var(--red);color:white;margin-top:12px;border-radius:8px;justify-content:center;border-bottom:none;font-size:16px;padding:15px;}
 
 /* CARRIER BAR */
-.carrier-bar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:1001;background:var(--bg-light);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden;}
-.carrier-bar::before,.carrier-bar::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
-.carrier-bar::before{left:0;background:linear-gradient(to right,var(--bg-light),transparent);}
-.carrier-bar::after{right:0;background:linear-gradient(to left,var(--bg-light),transparent);}
-.carrier-label{text-align:center;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
-.carrier-label strong{color:var(--text-muted);}
+.carrier-bar {
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 1001;
+  background: var(--bg-light); border-bottom: 1px solid var(--border);
+  padding: 14px 0; overflow: hidden;
+}
+.carrier-bar::before,.carrier-bar::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+}
+.carrier-bar::before { left: 0; background: linear-gradient(to right, var(--bg-light), transparent); }
+.carrier-bar::after { right: 0; background: linear-gradient(to left, var(--bg-light), transparent); }
+.carrier-label {
+  text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 1.8px;
+  text-transform: uppercase; color: var(--text-faint); margin-bottom: 10px;
+}
+.carrier-label strong {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: #15803d;
+  background: rgba(22,163,74,.07);
+  border: 1px solid rgba(34,197,94,.35);
+  padding: 3px 12px; border-radius: 20px;
+}
+.carrier-label strong::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: blink 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.carrier-track {
+  display: flex; align-items: center; width: max-content;
+  animation: carrier-scroll 50s linear infinite;
+}
+.carrier-track:hover { animation-play-state: paused; }
+.carrier-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0 32px; font-size: 12px; font-weight: 700;
+  color: var(--text-muted); white-space: nowrap; letter-spacing: .3px;
+}
+.carrier-item .carrier-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: blink 1.6s ease-in-out infinite; }
 .carrier-track{display:flex;align-items:center;width:max-content;animation:carrier-scroll 50s linear infinite;}
 .carrier-track:hover{animation-play-state:paused;}
 .carrier-item{display:inline-flex;align-items:center;gap:8px;padding:0 32px;font-size:12px;font-weight:700;color:var(--text-muted);white-space:nowrap;letter-spacing:.3px;}
@@ -191,7 +226,7 @@ a{color:inherit;}
 /* PAGE HERO — service page style */
 .page-hero{padding-top:calc(var(--nav-h) + var(--carrier-h));padding-bottom:0;background:var(--bg-white);position:relative;overflow:hidden;}
 .page-hero::after{display:none;}
-.hero-alert{background:var(--red);padding:11px 32px;display:flex;align-items:center;gap:10px;}
+.hero-alert{background:var(--red);padding:11px 32px;display:flex;align-items:center;gap:10px;position:relative;z-index:1;margin-top:calc(var(--nav-h) + var(--carrier-h));}
 .hero-alert-dot{width:9px;height:9px;border-radius:50%;background:white;flex-shrink:0;animation:blink 1.2s ease-in-out infinite;}
 .hero-alert span{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:white;}
 .hero-alert a{margin-left:auto;background:white;color:var(--red);font-size:12px;font-weight:700;padding:4px 14px;border-radius:4px;text-decoration:none;white-space:nowrap;flex-shrink:0;}
@@ -459,36 +494,38 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
 
 <!-- CARRIER BAR -->
 <div class="carrier-bar" aria-label="Insurance carriers we work with">
-  <div class="carrier-label"><strong>We Bill Insurance Directly</strong> — All Major Carriers Accepted</div>
+  <div class="carrier-label"><strong>All Insurance Carriers Accepted</strong></div>
   <div class="carrier-track" aria-hidden="true">
     <span class="carrier-item"><span class="carrier-dot"></span>State Farm</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Allstate</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Liberty Mutual</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Travelers</span>
-    <span class="carrier-item"><span class="carrier-dot"></span>GEICO</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Nationwide</span>
     <span class="carrier-item"><span class="carrier-dot"></span>MetLife</span>
     <span class="carrier-item"><span class="carrier-dot"></span>NJ Manufacturers</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Farmers</span>
     <span class="carrier-item"><span class="carrier-dot"></span>USAA</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Chubb</span>
+    <span class="carrier-item"><span class="carrier-dot"></span>Erie Insurance</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Progressive</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Hartford</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Amica</span>
+    <span class="carrier-item"><span class="carrier-dot"></span>Auto-Owners</span>
     <span class="carrier-item"><span class="carrier-dot"></span>State Farm</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Allstate</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Liberty Mutual</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Travelers</span>
-    <span class="carrier-item"><span class="carrier-dot"></span>GEICO</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Nationwide</span>
     <span class="carrier-item"><span class="carrier-dot"></span>MetLife</span>
     <span class="carrier-item"><span class="carrier-dot"></span>NJ Manufacturers</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Farmers</span>
     <span class="carrier-item"><span class="carrier-dot"></span>USAA</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Chubb</span>
+    <span class="carrier-item"><span class="carrier-dot"></span>Erie Insurance</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Progressive</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Hartford</span>
     <span class="carrier-item"><span class="carrier-dot"></span>Amica</span>
+    <span class="carrier-item"><span class="carrier-dot"></span>Auto-Owners</span>
   </div>
 </div>
 
