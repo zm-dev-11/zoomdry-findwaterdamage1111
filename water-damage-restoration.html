@@ -189,13 +189,14 @@ a{color:inherit;}
 .carrier-dot{width:6px;height:6px;border-radius:50%;background:var(--border-lit);flex-shrink:0;}
 
 /* PAGE HERO — service page style */
-.page-hero{
-  padding-top:calc(var(--nav-h) + var(--carrier-h) + 56px);
-  padding-bottom:56px;padding-left:32px;padding-right:32px;
-  background:linear-gradient(145deg,#eef3fa 0%,#dfe9f6 55%,#f0f4fa 100%);
-  position:relative;overflow:hidden;
-}
-.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 40%,rgba(26,111,181,.08) 0%,transparent 65%);}
+.page-hero{padding-top:calc(var(--nav-h) + var(--carrier-h));padding-bottom:0;background:var(--bg-white);position:relative;overflow:hidden;}
+.page-hero::after{display:none;}
+.hero-alert{background:var(--red);padding:11px 32px;display:flex;align-items:center;gap:10px;}
+.hero-alert-dot{width:9px;height:9px;border-radius:50%;background:white;flex-shrink:0;animation:blink 1.2s ease-in-out infinite;}
+.hero-alert span{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:white;}
+.hero-alert a{margin-left:auto;background:white;color:var(--red);font-size:12px;font-weight:700;padding:4px 14px;border-radius:4px;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.hero-body{padding:40px 32px 48px;border-bottom:3px solid var(--red);}
+.urgency-box{background:var(--bg-light);border:1px solid var(--border);border-radius:12px;padding:20px 22px;min-width:220px;text-align:center;flex-shrink:0;}
 .page-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;}
 .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-faint);margin-bottom:20px;flex-wrap:wrap;}
 .breadcrumb a{color:var(--blue);text-decoration:none;font-weight:600;}
@@ -366,7 +367,10 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
   :root{--nav-h:64px;--carrier-h:54px;}
   .nav-links,.nav-right{display:none;}
   .nav-toggle{display:flex;}
-  .page-hero{padding-top:calc(var(--nav-h) + var(--carrier-h) + 36px);padding-left:20px;padding-right:20px;}
+  .page-hero{padding-top:calc(var(--nav-h) + var(--carrier-h));}
+  .hero-body{padding:24px 20px 36px;}
+  .hero-alert{padding:10px 16px;flex-wrap:wrap;}
+  .urgency-box{display:none;}
   .content-wrap{padding:0 20px;}
   .content-grid{padding:40px 0;}
   .neighborhood-grid,.related-grid{grid-template-columns:1fr;}
@@ -492,35 +496,65 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-inner fade-in">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span class="breadcrumb-sep">›</span>
-      <a href="/services/">Services</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Water Damage Restoration</span>
-    </nav>
-    <h1>
-      <span class="hl-blue">Water Damage</span><br>
-      <span class="hl-red">Restoration</span><br>
-      <span style="display:block;font-size:.38em;font-family:var(--font-body);font-weight:600;letter-spacing:3px;color:var(--text-secondary);text-transform:uppercase;margin-top:10px;line-height:1.4;">Staten Island, New York</span>
-    </h1>
-    <div class="hero-meta">
-      <span class="hero-chip"><span class="ck">✓</span> IICRC Certified</span>
-      <span class="hero-chip"><span class="ck">✓</span> 90-Min Response</span>
-      <span class="hero-chip"><span class="ck">✓</span> Direct Insurance Billing</span>
-      <span class="hero-chip"><span class="ck">✓</span> 5.0 ★ on Thumbtack</span>
-      <span class="hero-chip"><span class="ck">✓</span> Licensed &amp; Insured NY</span>
-      <span class="hero-chip"><span class="ck">✓</span> 28 Years Experience</span>
-    </div>
-    <div class="hero-cta-row">
-      <a href="tel:17189242043" class="btn-primary" id="heroCallBtn">📞 Call Now — (718) 924-2043</a>
-      <a href="#contact-form" class="btn-ghost">📋 Free Inspection Request</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">90<sup>min</sup></span><span class="stat-label">Response Guarantee</span></div>
-      <div class="stat-item"><span class="stat-num">28<sup>yr</sup></span><span class="stat-label">In Business Since '97</span></div>
-      <div class="stat-item"><span class="stat-num">5.0<sup>★</sup></span><span class="stat-label">39 Verified Reviews</span></div>
+
+  <div class="hero-alert">
+    <span class="hero-alert-dot"></span>
+    <span>Emergency Response Active — Dispatching Now</span>
+    <a href="tel:17189242043" id="heroAlertPhone">Call (718) 924-2043</a>
+  </div>
+
+  <div class="hero-body">
+    <div style="max-width:1200px;margin:0 auto;">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:24px;">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <a href="/services/">Services</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span>Water Damage Restoration</span>
+      </nav>
+
+      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;">
+        <div>
+          <h1 style="font-family:var(--font-display);font-size:clamp(42px,6vw,76px);line-height:.95;letter-spacing:1px;text-transform:uppercase;color:var(--text-primary);margin-bottom:14px;">
+            <span style="color:var(--red);">Water In</span><br>
+            <span style="color:var(--text-primary);">Your Home?</span>
+          </h1>
+
+          <p style="font-size:17px;color:var(--text-secondary);font-weight:500;margin-bottom:22px;line-height:1.6;">
+            Zoom Dry arrives in <strong style="color:var(--text-primary);">90 minutes or less</strong> anywhere in Staten Island.<br>IICRC certified &middot; Direct insurance billing &middot; Operating since 1997.
+          </p>
+
+          <div class="hero-meta" style="margin-bottom:26px;">
+            <span class="hero-chip"><span class="ck">&#10003;</span> Cat 1, 2 &amp; 3 Water</span>
+            <span class="hero-chip"><span class="ck">&#10003;</span> 3&ndash;5 Day Drying Process</span>
+            <span class="hero-chip"><span class="ck">&#10003;</span> Thermal Imaging Included</span>
+            <span class="hero-chip"><span class="ck">&#10003;</span> All Claims Handled</span>
+            <span class="hero-chip"><span class="ck">&#10003;</span> Mold Prevention Protocol</span>
+            <span class="hero-chip"><span class="ck">&#10003;</span> IICRC S500 Certified</span>
+          </div>
+
+          <div class="hero-cta-row" style="margin-bottom:32px;">
+            <a href="tel:17189242043" class="btn-primary" id="heroCallBtn">&#128222; Call Now &mdash; (718) 924-2043</a>
+            <a href="#contact-form" class="btn-ghost">&#128203; Free Inspection Request</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item"><span class="stat-num">90<sup>min</sup></span><span class="stat-label">Response Guarantee</span></div>
+            <div class="stat-item"><span class="stat-num">28<sup>yr</sup></span><span class="stat-label">In Business Since &apos;97</span></div>
+            <div class="stat-item"><span class="stat-num">5.0<sup>&#9733;</sup></span><span class="stat-label">39 Verified Reviews</span></div>
+          </div>
+        </div>
+
+        <div class="urgency-box">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px;">Response Time</div>
+          <div style="font-family:var(--font-display);font-size:56px;color:var(--red);line-height:1;">90</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:16px;">minutes or less</div>
+          <a href="tel:17189242043" style="display:block;background:var(--red);color:white;text-decoration:none;padding:11px;border-radius:7px;font-weight:700;font-size:13px;" id="urgencyBoxPhone">Call Now</a>
+          <p style="font-size:10.5px;color:var(--text-faint);margin-top:8px;">24 hours &middot; 365 days &middot; No voicemail</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -822,7 +856,7 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
       <p class="footer-about">Staten Island's leading water damage restoration company. IICRC certified, 90-minute emergency response, direct insurance billing. A proud member of the 1RP Family of Companies — restoring Staten Island since 1997.</p>
       <div class="footer-contact">
         <a href="tel:17189242043" id="footerPhone">📞 (718) 924-2043</a>
-        <a href="/cdn-cgi/l/email-protection#dbafb3bea9bea8afb4a9baafb2b4b5aba9b4b8b7bab2b6a89bbcb6bab2b7f5b8b4b6">✉️ <span class="__cf_email__" data-cfemail="87f3efe2f5e2f4f3e8f5e6f3eee8e9f7f5e8e4ebe6eeeaf4c7e0eae6eeeba9e4e8ea">[email&#160;protected]</span></a>
+        <a href="mailto:therestorationproclaims@gmail.com">✉️ therestorationproclaims@gmail.com</a>
         <a href="/contact/">📍 Staten Island, NY 10309</a>
       </div>
     </div>
@@ -876,7 +910,7 @@ footer{background:#0d1117;color:rgba(255,255,255,.55);padding:60px 0 0;font-size
   <a href="tel:17189242043" id="mobileStickyBar">📞 Call Now — 24/7: (718) 924-2043</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 'use strict';
 
 // ── NAV SCROLL ──
@@ -1006,4 +1040,13 @@ function toggleFaq(btn){
 // ── TIME ON PAGE ──
 [30,60,120].forEach(s=>setTimeout(()=>pushEvent({event:'time_on_page',seconds:s,page_type:'service_page'}),s*1000));
 
-// ── SMOOTH SCROLL ─�
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
