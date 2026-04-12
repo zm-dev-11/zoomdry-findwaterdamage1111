@@ -368,6 +368,7 @@ a { color: inherit; }
 .nav-toggle {
   display: none; background: none; border: none; cursor: pointer;
   padding: 8px; flex-direction: column; gap: 5px;
+  position: relative; z-index: 1003;
 }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: .3s; }
 
@@ -991,7 +992,7 @@ footer {
 
 @media (max-width: 768px) {
   :root { --nav-h: 64px; --carrier-h: 54px; }
-  .nav-links,.nav-right { display: none; }
+  .nav-links,.nav-right { display: none !important; pointer-events: none; }
   .nav-toggle { display: flex; }
   .hero-inner { grid-template-columns: 1fr; }
   .mobile-emergency-call { display: block; }
@@ -1859,9 +1860,10 @@ function toggleMobileMenu(e) {
   navToggle.querySelectorAll('span')[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
   navToggle.querySelectorAll('span')[1].style.opacity = isOpen ? '0' : '';
   navToggle.querySelectorAll('span')[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+  console.log('Menu toggled:', isOpen);
 }
 navToggle.addEventListener('click', toggleMobileMenu);
-navToggle.addEventListener('touchend', toggleMobileMenu, { passive: false });
+navToggle.addEventListener('touchstart', toggleMobileMenu, { passive: false });
 document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
   mobileMenu.classList.remove('open');
   navToggle.setAttribute('aria-expanded', 'false');
