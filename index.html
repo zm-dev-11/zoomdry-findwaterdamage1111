@@ -1029,9 +1029,9 @@ footer {
 ======================================== -->
 <nav class="site-nav" id="siteNav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="nav-logo" aria-label="Zoom Dry Water Damage - Home">
+    <a href="/" class="nav-logo" aria-label="Zoom Dry - Home">
       <div class="nav-logo-mark" aria-hidden="true">💧</div>
-      Zoom <span>Dry</span> Water Damage
+      Zoom <span>Dry</span>
     </a>
 
     <ul class="nav-links" role="list">
@@ -1064,14 +1064,10 @@ footer {
       </li>
       <li><a href="/about/">About Us</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/contact/">Contact</a></li>
     </ul>
 
     <div class="nav-right">
-      <div class="live-indicator" aria-live="polite">
-        <span class="live-dot"></span> Live 24/7
-      </div>
-      <a href="tel:17189242043" class="nav-phone" aria-label="Call Zoom Dry">(718) 924-2043</a>
+      <span class="live-dot"></span><a href="tel:17189242043" class="nav-phone" aria-label="Call Zoom Dry">(718) 924-2043</a>
       <a href="#contact-form" class="btn-nav-cta">📋 Free Inspection</a>
     </div>
 
@@ -1091,7 +1087,6 @@ footer {
   <a href="/service-areas/">📍 All Service Areas</a>
   <a href="/about/">ℹ️ About Zoom Dry</a>
   <a href="/blog/">📰 Blog & Resources</a>
-  <a href="/contact/">✉️ Contact Us</a>
   <a href="tel:17189242043" class="mobile-cta">📞 Call Now — (718) 924-2043</a>
 </nav>
 
@@ -1827,7 +1822,7 @@ footer {
   <a href="tel:17189242043">📞 Call Now — 24/7: (718) 924-2043</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Nav scroll shadow
 window.addEventListener('scroll', () => {
   document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 40);
@@ -1855,14 +1850,18 @@ document.addEventListener('keydown', e => {
 // Mobile menu toggle
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-navToggle.addEventListener('click', () => {
+function toggleMobileMenu(e) {
+  e.preventDefault();
+  e.stopPropagation();
   const isOpen = mobileMenu.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', isOpen);
   mobileMenu.setAttribute('aria-hidden', !isOpen);
   navToggle.querySelectorAll('span')[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
   navToggle.querySelectorAll('span')[1].style.opacity = isOpen ? '0' : '';
   navToggle.querySelectorAll('span')[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
-});
+}
+navToggle.addEventListener('click', toggleMobileMenu);
+navToggle.addEventListener('touchend', toggleMobileMenu, { passive: false });
 document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
   mobileMenu.classList.remove('open');
   navToggle.setAttribute('aria-expanded', 'false');
