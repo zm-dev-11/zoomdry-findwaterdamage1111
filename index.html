@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home Services Marketing Agency | SEO + Web Design for Trades</title>
-<meta name="description" content="Web design & SEO for home-service businesses — roofing, restoration, plumbing, HVAC, construction. Built by a team that ranks its own company. See the proof, then text us.">
+<meta name="description" content="Web design & SEO for home-service businesses — roofing, restoration, plumbing, HVAC, construction. Built by a team that ranks its own company. See our work, then text us.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Find Water Damage">
 <meta property="og:title" content="Show Up for Your Customers on Google — Web Design & SEO for the Trades">
@@ -32,9 +32,10 @@
   --ink:#0B1A33; --surface:#1E3151; --surface-2:#273A5C; --raise:#33476C;
   --cobalt:#2E6BFF; --cobalt-bright:#5B8BFF; --cobalt-deep:#1E4FCC;
   --ember:#FF6A3D; --ember-bright:#FF855F;
+  --green:#8CC449; --green-bright:#9DD65A;
   --text:#EAEEF4; --muted:#98A3B4; --faint:#5C6675;
   --line:rgba(234,238,244,.09); --line-2:rgba(234,238,244,.16);
-  --glow-cobalt:rgba(46,107,255,.18); --glow-ember:rgba(255,106,61,.16);
+  --glow-cobalt:rgba(46,107,255,.18); --glow-ember:rgba(255,106,61,.16); --glow-green:rgba(140,196,73,.20);
   --disp:'Bricolage Grotesque',-apple-system,BlinkMacSystemFont,sans-serif;
   --body:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -86,16 +87,16 @@ a{color:inherit;text-decoration:none}
 .nav-right{display:flex;align-items:center;gap:14px}
 .nav-call{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;white-space:nowrap}
 .nav-call .pin{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--ember);animation:glowPulse 2s ease infinite}
-.nav-cta{background:var(--cobalt);color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:13px;
-  transition:transform .15s,box-shadow .25s,background .2s;box-shadow:0 0 0 1px rgba(91,139,255,.3),0 8px 24px var(--glow-cobalt)}
-.nav-cta:hover{background:var(--cobalt-bright);transform:translateY(-1px);box-shadow:0 0 0 1px rgba(91,139,255,.5),0 12px 30px var(--glow-cobalt)}
+.nav-cta{background:var(--green);color:var(--ink);padding:10px 18px;border-radius:9px;font-weight:700;font-size:13px;
+  transition:transform .15s,box-shadow .25s,background .2s;box-shadow:0 0 0 1px rgba(140,196,73,.35),0 8px 24px var(--glow-green)}
+.nav-cta:hover{background:var(--green-bright);transform:translateY(-1px);box-shadow:0 0 0 1px rgba(140,196,73,.55),0 12px 30px var(--glow-green)}
 .burger{display:flex;flex-direction:column;gap:5px;background:rgba(234,238,244,.04);border:1px solid var(--line-2);border-radius:22px;cursor:pointer;padding:10px 12px;z-index:60;transition:background .2s,border-color .2s}
 .burger:hover{background:rgba(234,238,244,.08);border-color:var(--cobalt)}
 .burger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
 .mobile{display:none;position:fixed;inset:var(--nav-h) 0 0;z-index:45;background:var(--ink);padding:24px 28px;flex-direction:column;gap:4px}
 .mobile.open{display:flex}
 .mobile a{padding:16px 6px;font-family:var(--disp);font-size:20px;font-weight:600;border-bottom:1px solid var(--line)}
-.mobile .m-cta{margin-top:20px;background:var(--cobalt);color:#fff;text-align:center;border-radius:11px;border:none;padding:17px;font-family:var(--body);font-weight:700;font-size:15px}
+.mobile .m-cta{margin-top:20px;background:var(--green);color:var(--ink);text-align:center;border-radius:11px;border:none;padding:17px;font-family:var(--body);font-weight:700;font-size:15px}
 .mobile .m-soon{opacity:.5;cursor:default;display:flex;align-items:center;gap:10px}
 .mobile .m-call{margin-top:10px;text-align:center;border:1px solid var(--line-2);border-radius:11px;color:var(--text);font-family:var(--mono);font-weight:700}
 
@@ -153,37 +154,22 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .hero-grid{position:absolute;inset:-50px 0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse 90% 70% at 70% 30%,#000 0%,transparent 75%);animation:gridDrift 8s linear infinite}
 .hero-glow1{position:absolute;width:760px;height:760px;right:-160px;top:-200px;border-radius:50%;background:radial-gradient(circle,var(--glow-cobalt) 0%,transparent 65%);filter:blur(20px)}
 .hero-glow2{position:absolute;width:520px;height:520px;left:-180px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,var(--glow-ember) 0%,transparent 65%);filter:blur(20px)}
-.hero-in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.25fr .75fr;gap:54px;align-items:center}
+.hero-in{position:relative;z-index:2;width:100%;max-width:880px;margin:0 auto;text-align:center}
 .hero h1{font-size:clamp(29px,4.7vw,60px);font-weight:800;margin-bottom:26px;line-height:1.04}
 .hero h1 .accent{color:var(--cobalt-bright)}
 .hero h1 .accent-e{color:var(--ember)}
-.hero h1 .accent-g{color:#8CC449}
-.hero-sub{max-width:560px;font-size:clamp(15px,1.7vw,18.5px);color:var(--muted);margin-bottom:22px}
+.hero h1 .accent-g{color:var(--green)}
+.hero-sub{max-width:560px;font-size:clamp(15px,1.7vw,18.5px);color:var(--muted);margin:0 auto 22px}
 .hero-sub b{color:var(--text);font-weight:600}
 .hero-verticals{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.5px;margin-bottom:36px}
 .hero-verticals b{color:var(--cobalt-bright);font-weight:500}
-.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--cobalt);color:#fff;padding:16px 28px;border-radius:11px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:var(--body);transition:transform .15s,box-shadow .25s,background .2s;box-shadow:0 0 0 1px rgba(91,139,255,.4),0 10px 34px var(--glow-cobalt)}
-.btn-primary:hover{background:var(--cobalt-bright);transform:translateY(-2px);box-shadow:0 0 0 1px rgba(91,139,255,.6),0 16px 44px var(--glow-cobalt)}
+.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:var(--ink);padding:16px 28px;border-radius:11px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:var(--body);transition:transform .15s,box-shadow .25s,background .2s;box-shadow:0 0 0 1px rgba(140,196,73,.45),0 10px 34px var(--glow-green)}
+.btn-primary:hover{background:var(--green-bright);transform:translateY(-2px);box-shadow:0 0 0 1px rgba(140,196,73,.6),0 16px 44px var(--glow-green)}
 .btn-ghost{display:inline-flex;align-items:center;gap:9px;color:var(--text);font-weight:700;font-size:15px;padding:15px 22px;border-radius:11px;border:1px solid var(--line-2);transition:border-color .2s,color .2s,background .2s}
 .btn-ghost:hover{border-color:var(--cobalt);color:var(--cobalt-bright);background:var(--glow-cobalt)}
 
 /* hero proof mini-panel */
-.hero-panel{position:relative;background:linear-gradient(160deg,var(--surface) 0%,var(--surface-2) 100%);border:1px solid var(--line-2);border-radius:16px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.5);overflow:hidden}
-.hero-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cobalt),var(--ember))}
-.hp-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.hp-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cobalt-bright);display:flex;align-items:center;gap:7px}
-.hp-tag .lv{width:6px;height:6px;border-radius:50%;background:#36D399;box-shadow:0 0 8px #36D399;animation:blink 1.6s infinite}
-.hp-mono{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.hp-query{background:var(--ink);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:9px}
-.hp-query svg{color:var(--faint);flex-shrink:0}
-.hp-result{border-left:2px solid var(--cobalt);padding:2px 0 2px 13px;margin-bottom:18px}
-.hp-result .u{font-family:var(--mono);font-size:10.5px;color:#36D399;margin-bottom:3px}
-.hp-result .t{font-family:var(--disp);font-size:16px;color:var(--cobalt-bright);font-weight:600;margin-bottom:4px}
-.hp-result .m{font-size:11.5px;color:var(--faint);line-height:1.4}
-.hp-bars{display:flex;align-items:flex-end;gap:6px;height:54px;margin-bottom:8px}
-.hp-bars span{flex:1;background:linear-gradient(to top,var(--cobalt-deep),var(--cobalt-bright));border-radius:3px 3px 0 0;transform-origin:bottom;animation:barGrow .8s cubic-bezier(.16,1,.3,1) both}
-.hp-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:1px}
 
 /* scrolling marquee strip */
 .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);overflow:hidden;padding:18px 0;position:relative;z-index:2}
@@ -192,62 +178,6 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .strip-item .s{color:var(--cobalt);font-size:13px}
 
 /* ---------- OPERATOR PROOF ---------- */
-.proof{background:var(--ink);position:relative}
-.proof-head{max-width:760px;margin-bottom:46px}
-.proof-head h2{margin:14px 0 18px}
-.op-instrument{background:linear-gradient(165deg,var(--surface) 0%,#0A1830 100%);border:1px solid var(--line-2);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
-.op-toggle{display:flex;gap:0;padding:14px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.2)}
-.op-tab{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:14px 20px;border-radius:12px;cursor:pointer;border:1px solid transparent;background:none;font-family:var(--body);transition:background .25s,border-color .25s;text-align:left}
-.op-tab .ot-name{font-family:var(--disp);font-size:17px;font-weight:700;color:var(--muted);transition:color .25s}
-.op-tab .ot-meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.5px}
-.op-tab[data-active="true"]{background:var(--surface-2);border-color:var(--line-2)}
-.op-tab[data-active="true"].cobalt .ot-name{color:var(--cobalt-bright)}
-.op-tab[data-active="true"].ember .ot-name{color:var(--ember-bright)}
-.op-tab[data-active="true"] .ot-dot{box-shadow:0 0 10px currentColor}
-.ot-row{display:flex;align-items:center;gap:8px}
-.ot-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.op-tab.cobalt .ot-dot{background:var(--cobalt);color:var(--cobalt)}
-.op-tab.ember .ot-dot{background:var(--ember);color:var(--ember)}
-.op-body{display:grid;grid-template-columns:1.1fr .9fr;gap:0;min-height:360px}
-.op-left{padding:38px 36px;border-right:1px solid var(--line)}
-.op-pane{display:none}
-.op-pane[data-show="true"]{display:block;animation:riseIn .5s ease both}
-.op-kicker{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:9px}
-.op-kicker.cobalt{color:var(--cobalt-bright)}.op-kicker.ember{color:var(--ember-bright)}
-.op-left h3{font-size:27px;margin-bottom:8px}
-.op-domain{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:22px}
-.op-serp{background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:20px}
-.op-serp-q{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
-.op-serp-q svg{color:var(--faint)}
-.op-pos{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.op-pos-badge{font-family:var(--disp);font-weight:800;font-size:15px;color:#fff;width:auto;padding:7px 13px;border-radius:9px;display:flex;align-items:center;gap:7px;white-space:nowrap}
-.op-pos-badge.cobalt{background:linear-gradient(135deg,var(--cobalt),var(--cobalt-deep))}
-.op-pos-badge.ember{background:linear-gradient(135deg,var(--ember),#D9461F)}
-.op-pos-txt{font-size:13px;color:var(--muted);line-height:1.4}
-.op-pos-txt b{color:var(--text)}
-.op-result{border-left:2px solid;padding-left:13px}
-.op-result.cobalt{border-color:var(--cobalt)}.op-result.ember{border-color:var(--ember)}
-.op-result .u{font-family:var(--mono);font-size:10.5px;color:#36D399;margin-bottom:3px}
-.op-result .t{font-family:var(--disp);font-size:15px;font-weight:600;margin-bottom:4px}
-.op-result.cobalt .t{color:var(--cobalt-bright)}.op-result.ember .t{color:var(--ember-bright)}
-.op-result .m{font-size:11px;color:var(--faint);line-height:1.45}
-.op-note{font-size:12.5px;color:var(--faint);line-height:1.5;font-style:italic}
-.op-right{padding:38px 32px;background:rgba(0,0,0,.18);display:flex;flex-direction:column;justify-content:center}
-.op-metric{margin-bottom:26px}
-.op-metric:last-child{margin-bottom:0}
-.op-metric-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin-bottom:10px;display:flex;justify-content:space-between}
-.op-trend{display:flex;align-items:flex-end;gap:5px;height:60px}
-.op-trend span{flex:1;border-radius:3px 3px 0 0;transform-origin:bottom;animation:barGrow .9s cubic-bezier(.16,1,.3,1) both}
-.op-trend.cobalt span{background:linear-gradient(to top,var(--cobalt-deep),var(--cobalt-bright))}
-.op-trend.ember span{background:linear-gradient(to top,#B23A1A,var(--ember-bright))}
-.op-stat-row{display:flex;align-items:baseline;gap:10px}
-.op-stat-big{font-family:var(--disp);font-weight:800;font-size:34px;color:#fff}
-.op-stat-sub{font-size:12px;color:var(--muted)}
-.op-foot{padding:16px 36px;border-top:1px solid var(--line);background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.op-foot-note{font-family:var(--mono);font-size:10.5px;color:var(--faint);display:flex;align-items:center;gap:8px}
-.op-foot-note .lv{width:6px;height:6px;border-radius:50%;background:#36D399;box-shadow:0 0 8px #36D399;animation:blink 1.6s infinite}
-.op-foot a{font-size:12.5px;font-weight:700;color:var(--cobalt-bright);display:inline-flex;align-items:center;gap:7px;transition:gap .2s}
-.op-foot a:hover{gap:12px}
 
 /* ---------- VERTICALS ---------- */
 .verticals{background:linear-gradient(180deg,var(--ink),var(--surface) 60%,var(--ink))}
@@ -381,15 +311,12 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .footer-bot .fb-call{color:var(--text);font-weight:700}
 
 /* mobile call bar */
-.mobar{position:fixed;bottom:0;left:0;right:0;z-index:46;display:none;background:var(--cobalt);box-shadow:0 -6px 24px rgba(0,0,0,.4)}
-.mobar a{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px;color:#fff;font-family:var(--body);font-weight:700;font-size:15px}
+.mobar{position:fixed;bottom:0;left:0;right:0;z-index:46;display:none;background:var(--green);box-shadow:0 -6px 24px rgba(0,0,0,.4)}
+.mobar a{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px;color:var(--ink);font-family:var(--body);font-weight:700;font-size:15px}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1000px){
   .hero-in{grid-template-columns:1fr;gap:44px}
-  .hero-panel{max-width:460px}
-  .op-body{grid-template-columns:1fr}
-  .op-left{border-right:none;border-bottom:1px solid var(--line)}
   .vt-stage{grid-template-columns:1fr;gap:30px;padding:30px}
   .vt-render{order:-1;max-width:480px}
   .svc-grid{grid-template-columns:1fr}
@@ -405,8 +332,6 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
   .hero{padding-top:calc(var(--nav-h) + var(--bar-h) + 32px)}
   .hero-cta{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-ghost{justify-content:center}
-  .op-toggle{flex-direction:column;gap:8px}
-  .op-left,.op-right{padding:26px 22px}
   .step-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .form{padding:26px 20px}
@@ -482,8 +407,8 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .call-card{background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--line-2);border-radius:18px;padding:38px 34px;box-shadow:0 30px 80px rgba(0,0,0,.5);text-align:center}
 .cc-h{font-family:var(--disp);font-size:27px;color:#fff;margin-bottom:7px}
 .cc-sub{font-size:13.5px;color:var(--muted);margin-bottom:26px}
-.call-btn{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;background:var(--cobalt);color:#fff;font-weight:800;font-size:19px;padding:18px;border-radius:13px;margin-bottom:12px;border:none;cursor:pointer;font-family:var(--body);transition:transform .15s,background .2s,box-shadow .25s;box-shadow:0 14px 36px var(--glow-cobalt)}
-.call-btn:hover{background:var(--cobalt-bright);transform:translateY(-2px);box-shadow:0 18px 46px var(--glow-cobalt)}
+.call-btn{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;background:var(--green);color:var(--ink);font-weight:800;font-size:19px;padding:18px;border-radius:13px;margin-bottom:12px;border:none;cursor:pointer;font-family:var(--body);transition:transform .15s,background .2s,box-shadow .25s;box-shadow:0 14px 36px var(--glow-green)}
+.call-btn:hover{background:var(--green-bright);transform:translateY(-2px);box-shadow:0 18px 46px var(--glow-green)}
 .call-btn .num{font-family:var(--mono);font-weight:700;letter-spacing:.5px}
 .call-text{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:1px solid var(--line-2);color:var(--text);font-weight:700;font-size:15px;padding:15px;border-radius:13px;transition:border-color .2s,color .2s,background .2s}
 .call-text:hover{border-color:var(--cobalt);color:var(--cobalt-bright);background:var(--glow-cobalt)}
@@ -497,10 +422,10 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .call-x:hover{background:var(--ink)}
 .call-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt-bright);margin-bottom:14px}
 .call-eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--ember);animation:glowPulse 1.7s ease infinite}
-.call-h{font-family:var(--disp);font-size:clamp(26px,3.6vw,38px);color:#fff;margin-bottom:16px;line-height:1.04;letter-spacing:-.02em}
-.call-copy{color:var(--muted);font-size:15.5px;line-height:1.65;margin-bottom:28px;text-align:left}
+.call-h{font-family:var(--disp);font-size:clamp(30px,5vw,38px);color:#fff;margin-bottom:18px;line-height:1.05;letter-spacing:0}
+.call-copy{color:var(--text);font-size:16.5px;line-height:1.62;margin-bottom:28px;text-align:left}
 .call-copy b{color:var(--text);font-weight:600}
-@media(max-width:640px){.call-dialog{padding:36px 24px 26px}.call-copy{font-size:14.5px}}
+@media(max-width:640px){.call-dialog{padding:36px 24px 26px}.call-copy{font-size:15.5px}}
 </style>
 </head>
 <body>
@@ -514,7 +439,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
       <span><span class="fw">findwaterdamage</span><span class="dot">.com</span></span>
     </a>
     <div class="nav-right">
-      <a href="sms:9733490549" class="nav-call"><span class="pin" aria-hidden="true"></span>973-349-0549</a>
+      <a href="#" data-call class="nav-call"><span class="pin" aria-hidden="true"></span>973-349-0549</a>
       <a href="#" data-call class="nav-cta">Text us</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -527,12 +452,12 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
   <a data-pv="pl" href="https://findplumbinghvac.com" target="_blank" rel="noopener">Plumbing &amp; HVAC <span style="color:var(--cobalt-bright)">Preview</span></a>
   <a data-pv="rf" href="#">Roofing <span style="color:var(--cobalt-bright)">Preview</span></a>
   <a href="#" data-call class="m-cta">Text us</a>
-  <a href="sms:9733490549" class="m-call">973-349-0549</a>
+  <a href="#" data-call class="m-call">973-349-0549</a>
 </div>
 
 <!-- VERTICAL BAR -->
 <div class="vbar">
-  <button class="vbar-anchor" id="vbarAnchor" aria-expanded="false" aria-controls="vbarDrop" aria-label="See our work — open page menu"><span class="vb-burger" aria-hidden="true"><span></span><span></span><span></span></span><span class="vb-dot" aria-hidden="true"></span><span>See Our Work</span></button>
+  <button class="vbar-anchor" id="vbarAnchor" aria-expanded="false" aria-controls="vbarDrop" aria-label="Our work — open page menu"><span class="vb-burger" aria-hidden="true"><span></span><span></span><span></span></span><span class="vb-dot" aria-hidden="true"></span><span>Our Work</span></button>
   <div class="vbar-marquee">
     <div class="vbar-track">
       <div class="vbar-group">
@@ -578,30 +503,10 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
       <p class="hero-sub fade" style="animation-delay:.8s">We build the site and run the SEO to help your business show up for the customers searching for what you do. We even do it for our own company — <b>Zoom Dry</b>, a restoration business we own and rank ourselves.</p>
       <p class="hero-verticals fade" style="animation-delay:.92s"><b>Roofing</b> · <b>Restoration</b> · <b>Plumbing</b> · <b>HVAC</b> · <b>Construction</b></p>
       <div class="hero-cta fade" style="animation-delay:1.02s">
-        <a href="#" data-call class="btn-primary">Text us
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#proof" class="btn-ghost">See the proof
+        <a href="#" data-call class="btn-primary">Text us</a>
+        <a href="#work" class="btn-ghost">See our work
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
       </div>
-    </div>
-    <div class="hero-panel fade" style="animation-delay:.55s" aria-hidden="true">
-      <div class="hp-top">
-        <span class="hp-tag"><span class="lv"></span>Live · Our Company</span>
-        <span class="hp-mono">rank ▲</span>
-      </div>
-      <div class="hp-query">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        water damage restoration staten island
-      </div>
-      <div class="hp-result">
-        <div class="u">zoomdryrestoration.com</div>
-        <div class="t">Zoom Dry Restoration — 24/7 Water Damage</div>
-        <div class="m">Emergency water extraction, drying & restoration across Staten Island and NJ…</div>
-      </div>
-      <div class="hp-bars">
-        <span style="height:30%;animation-delay:.1s"></span><span style="height:42%;animation-delay:.18s"></span><span style="height:38%;animation-delay:.26s"></span><span style="height:58%;animation-delay:.34s"></span><span style="height:70%;animation-delay:.42s"></span><span style="height:82%;animation-delay:.5s"></span><span style="height:100%;animation-delay:.58s"></span>
-      </div>
-      <div class="hp-foot"><span>Local visibility</span><span>climbing</span></div>
     </div>
   </div>
 </header>
@@ -621,113 +526,6 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
     <span class="strip-item"><span class="s">◆</span>Operator-built</span>
   </div>
 </div>
-
-<!-- OPERATOR PROOF -->
-<section class="section proof" id="proof">
-  <div class="wrap">
-    <div class="proof-head reveal">
-      <div class="eyebrow">01 — Proof, not theory</div>
-      <h2 class="sec-h">Don't take our word for it.<br>See it for yourself.</h2>
-      <p class="lead">Every agency shows you borrowed client logos. We'll show you the real thing — a company we own and a client we market — and the search results they earn. Flip between them.</p>
-    </div>
-
-    <div class="op-instrument reveal">
-      <div class="op-toggle" role="tablist">
-        <button class="op-tab cobalt" data-op="zd" data-active="true" role="tab">
-          <span class="ot-row"><span class="ot-dot" aria-hidden="true"></span><span class="ot-name">Zoom Dry</span></span>
-          <span class="ot-meta">WATER-DAMAGE RESTORATION · NJ + SI</span>
-        </button>
-        <button class="op-tab ember" data-op="an" data-active="false" role="tab">
-          <span class="ot-row"><span class="ot-dot" aria-hidden="true"></span><span class="ot-name">Anajur</span></span>
-          <span class="ot-meta">GENERAL CONTRACTOR · STATEN ISLAND</span>
-        </button>
-      </div>
-      <div class="op-body">
-        <div class="op-left">
-          <!-- ZD pane -->
-          <div class="op-pane" data-pane="zd" data-show="true">
-            <div class="op-kicker cobalt"><span>◆</span>A company we own &amp; rank</div>
-            <h3>Zoom Dry Restoration</h3>
-            <div class="op-domain">zoomdryrestoration.com</div>
-            <div class="op-serp">
-              <div class="op-serp-q"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>water damage restoration near me</div>
-              <div class="op-pos">
-                <span class="op-pos-badge cobalt"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Local pack</span>
-                <span class="op-pos-txt">Built to surface in the <b>map pack</b> for emergency water-damage searches.</span>
-              </div>
-              <div class="op-result cobalt">
-                <div class="u">zoomdryrestoration.com</div>
-                <div class="t">Zoom Dry Restoration — 24/7 Emergency</div>
-                <div class="m">IICRC-certified water extraction, structural drying & full restoration across Staten Island and New Jersey.</div>
-              </div>
-            </div>
-            <p class="op-note">Our own restoration company — the live proving ground for everything we'd build for you.</p>
-          </div>
-          <!-- AN pane -->
-          <div class="op-pane" data-pane="an" data-show="false">
-            <div class="op-kicker ember"><span>◆</span>A client we market &amp; rank</div>
-            <h3>Anajur Construction</h3>
-            <div class="op-domain">anajurconstruction.com</div>
-            <div class="op-serp">
-              <div class="op-serp-q"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>general contractor staten island</div>
-              <div class="op-pos">
-                <span class="op-pos-badge ember"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Page one</span>
-                <span class="op-pos-txt">A family GC <b>since 1997</b> — built for high-value construction searches.</span>
-              </div>
-              <div class="op-result ember">
-                <div class="u">anajurconstruction.com</div>
-                <div class="t">Anajur Construction — Staten Island GC</div>
-                <div class="m">Full-service general contracting, renovations & rebuilds. Family-owned and operated since 1997.</div>
-              </div>
-            </div>
-            <p class="op-note">A client in a different trade — proof the same playbook carries beyond our own company.</p>
-          </div>
-        </div>
-        <div class="op-right">
-          <!-- ZD metrics -->
-          <div class="op-pane" data-pane="zd" data-show="true">
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>Local visibility</span><span style="color:#36D399">▲ climbing</span></div>
-              <div class="op-trend cobalt">
-                <span style="height:24%;animation-delay:.1s"></span><span style="height:36%;animation-delay:.16s"></span><span style="height:30%;animation-delay:.22s"></span><span style="height:50%;animation-delay:.28s"></span><span style="height:62%;animation-delay:.34s"></span><span style="height:78%;animation-delay:.4s"></span><span style="height:92%;animation-delay:.46s"></span><span style="height:100%;animation-delay:.52s"></span>
-              </div>
-            </div>
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>Built for</span></div>
-              <div class="op-stat-row"><span class="op-stat-big">24/7</span><span class="op-stat-sub">emergency<br>call capture</span></div>
-            </div>
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>Coverage</span></div>
-              <div class="op-stat-row"><span class="op-stat-big">NJ + SI</span><span class="op-stat-sub">multi-area<br>local SEO</span></div>
-            </div>
-          </div>
-          <!-- AN metrics -->
-          <div class="op-pane" data-pane="an" data-show="false">
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>Search presence</span><span style="color:#36D399">▲ building</span></div>
-              <div class="op-trend ember">
-                <span style="height:28%;animation-delay:.1s"></span><span style="height:34%;animation-delay:.16s"></span><span style="height:46%;animation-delay:.22s"></span><span style="height:42%;animation-delay:.28s"></span><span style="height:60%;animation-delay:.34s"></span><span style="height:74%;animation-delay:.4s"></span><span style="height:88%;animation-delay:.46s"></span><span style="height:100%;animation-delay:.52s"></span>
-              </div>
-            </div>
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>In business</span></div>
-              <div class="op-stat-row"><span class="op-stat-big">1997</span><span class="op-stat-sub">family-owned<br>&amp; operated</span></div>
-            </div>
-            <div class="op-metric">
-              <div class="op-metric-lab"><span>Trade</span></div>
-              <div class="op-stat-row"><span class="op-stat-big">GC</span><span class="op-stat-sub">full-service<br>construction</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="op-foot">
-        <span class="op-foot-note"><span class="lv"></span>Real businesses we own and market — not stock, not borrowed logos</span>
-        <a class="op-pane" data-pane="zd" data-show="true" href="https://zoomdryrestoration.com" target="_blank" rel="noopener">Visit zoomdryrestoration.com <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-        <a class="op-pane" data-pane="an" data-show="false" href="https://anajurconstruction.com" target="_blank" rel="noopener">Visit anajurconstruction.com <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- VERTICALS / THE WORK -->
 <section class="section verticals" id="work">
@@ -899,13 +697,13 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
       <p>Whether you're ready to get going or just want a second opinion, we'd love to hear from you.</p>
       <div class="contact-phone">
         <div class="cl">Text us directly</div>
-        <a href="sms:9733490549"><span class="pin" aria-hidden="true"></span>973-349-0549</a>
+        <a href="#" data-call><span class="pin" aria-hidden="true"></span>973-349-0549</a>
       </div>
     </div>
     <div class="call-card reveal">
       <div class="cc-h">Ready to move?</div>
       <div class="cc-sub">No forms, no phone tag. Shoot us a text — we move quick.</div>
-      <a href="sms:9733490549" class="call-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text us to schedule</a>
+      <a href="#" data-call class="call-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text us to schedule</a>
       <p class="call-fine">No pressure · We reply fast</p>
     </div>
   </div>
@@ -921,7 +719,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
-        <a href="#proof">Proof</a><a href="#work">The Work</a><a href="#method">What We Do</a><a href="#promise">The Promise</a><a href="#contact">Contact</a>
+        <a href="#work">The Work</a><a href="#method">What We Do</a><a href="#promise">The Promise</a><a href="#contact">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Built &amp; ranked by us</h4>
@@ -1007,14 +805,14 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
   <div class="call-dialog" role="dialog" aria-modal="true" aria-label="Text us to schedule">
     <button class="call-x" data-callclose aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <div class="call-eyebrow"><span class="pulse" aria-hidden="true"></span>Let's Talk</div>
-    <h2 class="call-h">No forms. Just text us.</h2>
+    <h2 class="call-h">No forms. Just <span style="color:var(--green);white-space:nowrap">text us.</span></h2>
     <p class="call-copy">Send us a quick text — your website, a question, or whatever's on your mind. We'll take a real look and tell you straight <b>what's worth doing, and what isn't</b>. No pressure, no sales pitch — we're just here to help.</p>
     <a href="sms:9733490549" class="call-btn"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Send us a text</a>
     <p class="call-fine">No pressure · We reply fast</p>
   </div>
 </div>
 
-<div class="mobar"><a href="sms:9733490549"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Us · 973-349-0549</a></div>
+<div class="mobar"><a href="#" data-call><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Us · 973-349-0549</a></div>
 
 <script type="text/html" id="tpl-wd"><!DOCTYPE html>
 <html lang="en">
@@ -1789,8 +1587,8 @@ var bg=document.getElementById('burger'),mb=document.getElementById('mobile');
 bg.addEventListener('click',function(){var o=mb.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.children[0].style.transform=o?'rotate(45deg) translate(5px,5px)':'';bg.children[1].style.opacity=o?'0':'';bg.children[2].style.transform=o?'rotate(-45deg) translate(5px,-5px)':''});
 mb.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mb.classList.remove('open');bg.setAttribute('aria-expanded',false);bg.children[0].style.transform='';bg.children[1].style.opacity='';bg.children[2].style.transform=''})});
 // operator proof toggle
-function setOp(k){document.querySelectorAll('.op-tab').forEach(function(t){t.dataset.active=(t.dataset.op===k)});document.querySelectorAll('.op-pane').forEach(function(p){p.dataset.show=(p.dataset.pane===k)})}
-document.querySelectorAll('.op-tab').forEach(function(t){t.addEventListener('click',function(){setOp(t.dataset.op)})});
+
+
 // vertical tabs
 function setVt(k){document.querySelectorAll('.vt-tab').forEach(function(t){t.dataset.active=(t.dataset.vt===k)});document.querySelectorAll('.vt-pane').forEach(function(p){p.dataset.show=(p.dataset.vtpane===k)})}
 document.querySelectorAll('.vt-tab').forEach(function(t){t.addEventListener('click',function(){setVt(t.dataset.vt)})});
