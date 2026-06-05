@@ -29,7 +29,7 @@
 
 <style>
 :root{
-  --ink:#16273F; --surface:#1E3151; --surface-2:#273A5C; --raise:#33476C;
+  --ink:#0B1A33; --surface:#1E3151; --surface-2:#273A5C; --raise:#33476C;
   --cobalt:#2E6BFF; --cobalt-bright:#5B8BFF; --cobalt-deep:#1E4FCC;
   --ember:#FF6A3D; --ember-bright:#FF855F;
   --text:#EAEEF4; --muted:#98A3B4; --faint:#5C6675;
@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none}
 ::selection{background:var(--cobalt);color:#fff}
 
 /* film grain overlay */
-.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
   background:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ---------- motion ---------- */
@@ -60,7 +60,7 @@ a{color:inherit;text-decoration:none}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hl-line{display:block;overflow:hidden}
-.hl-line>span{display:block;animation:clipUp .9s cubic-bezier(.16,1,.3,1) both}
+.hl-line>span{display:block;white-space:nowrap;animation:clipUp .9s cubic-bezier(.16,1,.3,1) both}
 .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.57s}.d6{animation-delay:.70s}
 .fade{animation:riseIn .7s ease both}
 /* JS reveal: only hide when JS active */
@@ -74,8 +74,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;
-  background:rgba(11,14,19,.72);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-.nav.scrolled{border-bottom-color:var(--line);background:rgba(11,14,19,.9)}
+  background:rgba(11,26,51,.72);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(11,26,51,.9)}
 .nav-in{max-width:var(--maxw);margin:0 auto;width:100%;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.01em}
 .brand-mark{width:30px;height:30px;flex-shrink:0}
@@ -102,12 +102,25 @@ a{color:inherit;text-decoration:none}
 /* vertical quick-strip */
 .vbar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:44;height:var(--bar-h);
   background:linear-gradient(180deg,#1D2734,#141A23);
-  border-bottom:1px solid var(--line-2);box-shadow:0 10px 30px rgba(0,0,0,.42);overflow:hidden;animation:vbarIn .6s cubic-bezier(.16,1,.3,1) both}
+  border-bottom:1px solid var(--line-2);box-shadow:0 10px 30px rgba(0,0,0,.42);display:flex;align-items:stretch;animation:vbarIn .6s cubic-bezier(.16,1,.3,1) both}
+.vbar-anchor{flex-shrink:0;display:flex;align-items:center;gap:11px;padding:0 18px;height:100%;background:rgba(11,14,19,.55);border:0;border-right:1px solid var(--line-2);cursor:pointer;color:#fff;font-family:var(--body);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;position:relative;z-index:5;transition:background .2s}
+.vbar-anchor:hover{background:rgba(11,14,19,.78)}
+.vbar-anchor .vb-dot{width:9px;height:9px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--ember);animation:glowPulse 1.7s ease infinite;flex-shrink:0}
+.vbar-anchor .vb-burger{display:flex;flex-direction:column;gap:3.5px;flex-shrink:0}
+.vbar-anchor .vb-burger span{display:block;width:18px;height:2px;background:var(--cobalt-bright);border-radius:2px;transition:.3s}
+.vbar-anchor[aria-expanded="true"] .vb-burger span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.vbar-anchor[aria-expanded="true"] .vb-burger span:nth-child(2){opacity:0}
+.vbar-anchor[aria-expanded="true"] .vb-burger span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.vbar-drop{position:absolute;top:100%;left:0;min-width:250px;background:#141A23;border:1px solid var(--line-2);border-top:0;border-radius:0 0 14px 14px;box-shadow:0 24px 50px rgba(0,0,0,.55);padding:8px;display:none;z-index:60}
+.vbar-drop.open{display:block}
+.vbar-drop a{display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:9px;color:var(--text);font-size:14.5px;font-weight:700;white-space:nowrap;transition:background .2s,color .2s}
+.vbar-drop a:hover{background:var(--glow-cobalt);color:#fff}
+.vbar-drop a .vd{width:8px;height:8px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 9px var(--cobalt);flex-shrink:0}
 .vbar::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2.5px;z-index:3;background:linear-gradient(90deg,var(--cobalt),var(--ember),var(--cobalt));background-size:200% 100%;animation:shimmer 6s linear infinite}
 @keyframes vbarIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
 @keyframes shimmer{from{background-position:0 0}to{background-position:200% 0}}
-.vbar-marquee{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.vbar-marquee{flex:1;min-width:0;height:100%;overflow:hidden;display:flex;align-items:center;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent);mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent)}
 .vbar-track{display:flex;align-items:center;width:max-content;animation:vmarq 34s linear infinite;will-change:transform}
 .vbar:hover .vbar-track,.vbar-track.paused{animation-play-state:paused}
 @keyframes vmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -141,9 +154,10 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .hero-glow1{position:absolute;width:760px;height:760px;right:-160px;top:-200px;border-radius:50%;background:radial-gradient(circle,var(--glow-cobalt) 0%,transparent 65%);filter:blur(20px)}
 .hero-glow2{position:absolute;width:520px;height:520px;left:-180px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,var(--glow-ember) 0%,transparent 65%);filter:blur(20px)}
 .hero-in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.25fr .75fr;gap:54px;align-items:center}
-.hero h1{font-size:clamp(32px,4.7vw,60px);font-weight:800;margin-bottom:26px;line-height:1.04}
+.hero h1{font-size:clamp(29px,4.7vw,60px);font-weight:800;margin-bottom:26px;line-height:1.04}
 .hero h1 .accent{color:var(--cobalt-bright)}
 .hero h1 .accent-e{color:var(--ember)}
+.hero h1 .accent-g{color:#8CC449}
 .hero-sub{max-width:560px;font-size:clamp(15px,1.7vw,18.5px);color:var(--muted);margin-bottom:22px}
 .hero-sub b{color:var(--text);font-weight:600}
 .hero-verticals{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.5px;margin-bottom:36px}
@@ -181,7 +195,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .proof{background:var(--ink);position:relative}
 .proof-head{max-width:760px;margin-bottom:46px}
 .proof-head h2{margin:14px 0 18px}
-.op-instrument{background:linear-gradient(165deg,var(--surface) 0%,#15243B 100%);border:1px solid var(--line-2);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.op-instrument{background:linear-gradient(165deg,var(--surface) 0%,#0A1830 100%);border:1px solid var(--line-2);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
 .op-toggle{display:flex;gap:0;padding:14px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.2)}
 .op-tab{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:14px 20px;border-radius:12px;cursor:pointer;border:1px solid transparent;background:none;font-family:var(--body);transition:background .25s,border-color .25s;text-align:left}
 .op-tab .ot-name{font-family:var(--disp);font-size:17px;font-weight:700;color:var(--muted);transition:color .25s}
@@ -311,7 +325,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .step .when{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);border-radius:5px;padding:3px 9px}
 
 /* ---------- PROMISE band ---------- */
-.promise{background:linear-gradient(165deg,var(--surface),#15243B);position:relative;overflow:hidden}
+.promise{background:linear-gradient(165deg,var(--surface),#0A1830);position:relative;overflow:hidden}
 .promise::before{content:'';position:absolute;width:600px;height:600px;right:-200px;top:-200px;border-radius:50%;background:radial-gradient(circle,var(--glow-cobalt),transparent 65%)}
 .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:2}
 .promise h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:18px}
@@ -353,7 +367,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
 .form-ok p{color:var(--muted);font-size:14px;line-height:1.6}
 
 /* ---------- FOOTER ---------- */
-.footer{background:#0E1B2E;border-top:1px solid var(--line);padding:56px 0 32px}
+.footer{background:#07121F;border-top:1px solid var(--line);padding:56px 0 32px}
 .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--line)}
 .footer-brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:14px}
 .footer-about{font-size:13px;color:var(--faint);line-height:1.7;max-width:320px}
@@ -501,7 +515,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
     </a>
     <div class="nav-right">
       <a href="sms:9733490549" class="nav-call"><span class="pin" aria-hidden="true"></span>973-349-0549</a>
-      <a href="#" data-call class="nav-cta">Book a Call</a>
+      <a href="#" data-call class="nav-cta">Text us</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -512,16 +526,16 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
   <a data-pv="an" href="https://anajurconstruction.com" target="_blank" rel="noopener">Construction <span style="color:var(--cobalt-bright)">Preview</span></a>
   <a data-pv="pl" href="https://findplumbinghvac.com" target="_blank" rel="noopener">Plumbing &amp; HVAC <span style="color:var(--cobalt-bright)">Preview</span></a>
   <a data-pv="rf" href="#">Roofing <span style="color:var(--cobalt-bright)">Preview</span></a>
-  <a href="#" data-call class="m-cta">Book a Call</a>
+  <a href="#" data-call class="m-cta">Text us</a>
   <a href="sms:9733490549" class="m-call">973-349-0549</a>
 </div>
 
 <!-- VERTICAL BAR -->
 <div class="vbar">
+  <button class="vbar-anchor" id="vbarAnchor" aria-expanded="false" aria-controls="vbarDrop" aria-label="See our work — open page menu"><span class="vb-burger" aria-hidden="true"><span></span><span></span><span></span></span><span class="vb-dot" aria-hidden="true"></span><span>See Our Work</span></button>
   <div class="vbar-marquee">
     <div class="vbar-track">
       <div class="vbar-group">
-        <span class="vbar-lab"><span class="pulse" aria-hidden="true"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>See the Work</span>
         <a class="live" data-pv="wd" href="#"><span class="vd vd-on"></span>Water Damage<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
         <a class="live" data-pv="zd" href="https://zoomdryrestoration.com" target="_blank" rel="noopener"><span class="vd vd-on"></span>Restoration<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
         <a class="live" data-pv="an" href="https://anajurconstruction.com" target="_blank" rel="noopener"><span class="vd vd-on"></span>Construction<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
@@ -529,7 +543,6 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
         <a class="live" data-pv="rf" href="#"><span class="vd vd-on"></span>Roofing<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
       </div>
       <div class="vbar-group" aria-hidden="true">
-        <span class="vbar-lab"><span class="pulse"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>See the Work</span>
         <a tabindex="-1" class="live" data-pv="wd" href="#"><span class="vd vd-on"></span>Water Damage<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
         <a tabindex="-1" class="live" data-pv="zd" href="https://zoomdryrestoration.com" target="_blank" rel="noopener"><span class="vd vd-on"></span>Restoration<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
         <a tabindex="-1" class="live" data-pv="an" href="https://anajurconstruction.com" target="_blank" rel="noopener"><span class="vd vd-on"></span>Construction<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
@@ -537,6 +550,13 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
         <a tabindex="-1" class="live" data-pv="rf" href="#"><span class="vd vd-on"></span>Roofing<svg class="vgo" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>
       </div>
     </div>
+  </div>
+  <div class="vbar-drop" id="vbarDrop" role="menu">
+    <a data-pv="wd" href="#" role="menuitem"><span class="vd"></span>Water Damage</a>
+    <a data-pv="zd" href="https://zoomdryrestoration.com" target="_blank" rel="noopener" role="menuitem"><span class="vd"></span>Restoration</a>
+    <a data-pv="an" href="https://anajurconstruction.com" target="_blank" rel="noopener" role="menuitem"><span class="vd"></span>Construction</a>
+    <a data-pv="pl" href="https://findplumbinghvac.com" target="_blank" rel="noopener" role="menuitem"><span class="vd"></span>Plumbing &amp; HVAC</a>
+    <a data-pv="rf" href="#" role="menuitem"><span class="vd"></span>Roofing</a>
   </div>
 </div>
 
@@ -551,15 +571,14 @@ h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing
     <div>
       <div class="eyebrow fade" style="animation-delay:.02s">Websites &amp; SEO for Home-Service Businesses</div>
       <h1>
-        <span class="hl-line"><span class="d1">Show up for</span></span>
-        <span class="hl-line"><span class="d2">your customers</span></span>
-        <span class="hl-line"><span class="d3">on <span class="accent">Google.</span></span></span>
-        <span class="hl-line"><span class="d4">Get more <span class="accent-e">customers.</span></span></span>
+        <span class="hl-line"><span class="d1">Show up better on <span class="accent-g">Google.</span></span></span>
+        <span class="hl-line"><span class="d2"><span class="accent-e">Get more customers.</span></span></span>
+        <span class="hl-line"><span class="d3"><span class="accent-g">Simple.</span></span></span>
       </h1>
       <p class="hero-sub fade" style="animation-delay:.8s">We build the site and run the SEO to help your business show up for the customers searching for what you do. We even do it for our own company — <b>Zoom Dry</b>, a restoration business we own and rank ourselves.</p>
       <p class="hero-verticals fade" style="animation-delay:.92s"><b>Roofing</b> · <b>Restoration</b> · <b>Plumbing</b> · <b>HVAC</b> · <b>Construction</b></p>
       <div class="hero-cta fade" style="animation-delay:1.02s">
-        <a href="#" data-call class="btn-primary">Book a Call
+        <a href="#" data-call class="btn-primary">Text us
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a href="#proof" class="btn-ghost">See the proof
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
@@ -1799,6 +1818,14 @@ document.querySelectorAll('[data-demo]').forEach(function(el){el.addEventListene
 var callModal=document.getElementById('callModal');function openCall(){if(mb.classList.contains('open')){mb.classList.remove('open');bg.setAttribute('aria-expanded',false);bg.children[0].style.transform='';bg.children[1].style.opacity='';bg.children[2].style.transform='';}callModal.classList.add('open');callModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}function closeCall(){callModal.classList.remove('open');callModal.setAttribute('aria-hidden','true');document.body.style.overflow='';}document.querySelectorAll('[data-call]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();openCall();});});document.querySelectorAll('[data-callclose]').forEach(function(el){el.addEventListener('click',closeCall);});addEventListener('keydown',function(e){if(e.key==='Escape'&&callModal.classList.contains('open'))closeCall();});
 (function(){var tk=document.querySelector('.vbar-track');if(!tk)return;var rt;function pz(){tk.classList.add('paused');clearTimeout(rt);}function rs(){clearTimeout(rt);rt=setTimeout(function(){tk.classList.remove('paused');},2600);}tk.addEventListener('touchstart',pz,{passive:true});tk.addEventListener('touchend',rs,{passive:true});tk.addEventListener('touchcancel',rs,{passive:true});})();
 addEventListener('keydown',function(e){if(e.key==='Escape'&&pvModal.classList.contains('open'))closePv();});
+// vbar "See Our Work" dropdown
+(function(){var va=document.getElementById('vbarAnchor'),vd=document.getElementById('vbarDrop');if(!va||!vd)return;
+  function close(){vd.classList.remove('open');va.setAttribute('aria-expanded','false');}
+  va.addEventListener('click',function(e){e.stopPropagation();var op=vd.classList.toggle('open');va.setAttribute('aria-expanded',op?'true':'false');});
+  vd.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('click',function(e){if(vd.classList.contains('open')&&!vd.contains(e.target)&&!va.contains(e.target))close();});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
 </script>
 </body>
 </html>
